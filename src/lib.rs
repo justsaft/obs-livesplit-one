@@ -16,6 +16,12 @@ use std::{
     },
 };
 
+use std::borrow::Cow;
+
+/* use livesplit_core::event::Event;
+use std::future::Future;
+use livesplit_core::Result as LSResult; */
+
 mod ffi;
 mod ffi_types;
 
@@ -218,16 +224,12 @@ impl CommandSink for InnerTimer {
         async move { result }
     }
 
-    fn set_custom_variable(
-        &self,
-        name: &str,
-        value: &str,
-    ) -> impl Future<Output = Result> + 'static {
+    fn set_custom_variable(&self, name: Cow<'_, str>, value: Cow<'_, str>) -> impl Future<Output = Result> + 'static {
         self.timer.write().unwrap().set_custom_variable(name, value);
         async { Ok(Event::CustomVariableSet) }
     }
 
-    fn set_current_comparison(&self, comparison: &str) -> impl Future<Output = Result> + 'static {
+    fn set_current_comparison(&self, comparison: Cow<'_, str>) -> impl Future<Output = Result> + 'static {
         let result = self
             .timer
             .write()
