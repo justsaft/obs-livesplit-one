@@ -1,3 +1,0 @@
-[submodule "lib/darwin-libproc"]
-	path = lib/darwin-libproc
-	url = https://github.com/justsaft/darwin-libproc
