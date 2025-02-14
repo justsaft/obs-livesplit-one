@@ -1,5 +1,7 @@
 
 # How To Build
+This is intended as a simple documentation of some things I learned
+about building Rust and cross-building to other platforms
 
 ## 1. Install Rust toolchain
 
@@ -20,7 +22,7 @@ See [Rust Other Installation Methods](https://forge.rust-lang.org/infra/other-in
 ## 2. Once Rust is installed
 ```console
 # For nightly builds: $ rustup toolchain install nightly
-# automatically infers the platform
+# rustup can automatically infer your current platform
 $ rustup toolchain install stable
 $ rustup default stable
 ```
@@ -50,6 +52,8 @@ $ cargo build --release --target x86_64-pc-windows-gnu
 $ docker run --rm -it -v $(pwd):/io -w /io ghcr.io/rust-cross/cargo-zigbuild   cargo zigbuild --release --target aarch64-apple-darwin
 ```
 
+Of course it's complicated
+
 The docker container has everything installed, including the MacOS SDK, the cargo-zigbuild crate,
 **except for the libobs.framework.**
 
@@ -61,13 +65,13 @@ but I have no idea how to get zigbuild to find the frameworks on the linux host
 (don't forget to copy over the libobs.framework aswell)
 
 #### Mentioned OSX Cross environments
-- [Cargo-Zigbuild by Rust-Cross](https://github.com/rust-cross/cargo-zigbuild)
-- [OSXCross by tpoechtrager](https://github.com/tpoechtrager/osxcross)
+- [https://github.com/rust-cross/cargo-zigbuild](Cargo-Zigbuild by Rust-Cross)
+- [https://github.com/tpoechtrager/osxcross](OSXCross by tpoechtrager)
 
 There's also this, which I didn't try
-- [OSX Cross Docker Container](https://github.com/crazy-max/docker-osxcross)
+- [https://github.com/crazy-max/docker-osxcross](OSX Cross Docker Container)
 
 #### Docker Links
-- [Docker Linux Setup](https://docs.docker.com/desktop/setup/install/linux/)
-- [Docker Engine Installation](https://docs.docker.com/engine/install/)
-- [Docker Engine Installation Post-Install](https://docs.docker.com/engine/install/linux-postinstall/)
+- [https://docs.docker.com/desktop/setup/install/linux/](Docker Linux Setup)
+- [https://docs.docker.com/engine/install/](Docker Engine Installation)
+- [https://docs.docker.com/engine/install/linux-postinstall/](Docker Engine Installation Post-Install)
