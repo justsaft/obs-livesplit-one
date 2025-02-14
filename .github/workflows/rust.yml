@@ -135,6 +135,12 @@ jobs:
         if: startsWith(matrix.os, 'macos-')
         run: brew install --cask obs
 
+      - name: Install libobs-dev (Linux)
+        if: startsWith(matrix.os, 'ubuntu-')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libobs-dev
+
       - name: Download cross
         if: matrix.cross == ''
         uses: robinraju/release-downloader@v1.7
